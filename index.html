@@ -13,6 +13,17 @@
         <dd><input name="rcpt_org" value="{{ rcpt_org }}" /> (ID or Name)</dd>
       <dt>Recipient Organization #2 From Which to Relay EVEMail (Optional)</dt>
         <dd><input name="rcpt_org2" value="{{ rcpt_org2 }}" /> (ID or Name)</dd>
+      <dt>Types of Notifications To Relay</dt>
+        <dd><select name="notify_types" multiple="multiple" size="8">
+            {% for t in notify_descriptions %}
+            {% if t.type_id in notify_types %}
+              <option value="{{ t.type_id }}" selected="selected">{{ t.description }}
+              </option>
+            {% else %}
+              <option value="{{ t.type_id }}">{{ t.description }}</option>
+            {% endif %}
+            {% endfor %}
+            </select></dd>
       <dt>Destination Email Address</dt>
         <dd><input name="dest_email" value="{{ dest_email }}" /></dd>
     </dl>
